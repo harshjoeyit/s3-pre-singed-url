@@ -16,6 +16,7 @@
     AWS_REGION=your-aws-region
     AWS_ACCESS_KEY_ID=your-access-key-id
     AWS_SECRET_ACCESS_KEY=your-secret-access-key
+    CDN=your-cdn-url
     ```
 
 3.  **Run the application:**
@@ -82,8 +83,11 @@
 
     ```json
     {
-      "status": "file uploaded successfully",
-      "success": true,
-      "url": "https://your-cdn-url/uploads/your-uuid.jpeg"
+      "images": [
+        "https://your-cdn-url/uploads/your-uuid.jpeg",
+        "https://your-cdn-url/uploads/your-uuid.jpeg",
+        "https://your-cdn-url/uploads/your-uuid.jpeg",
+      ],
+      "success": true
     }
     ```

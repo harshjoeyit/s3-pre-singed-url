@@ -24,7 +24,7 @@ var DB *sql.DB
 
 // Pre-configured bunny CDN URL with origin as
 // the S3 bucket which is being used for uploads
-const CDN = "https://harshit-s3.b-cdn.net"
+var CDN string
 
 type S3Bucket struct {
 	BucketName    string
@@ -185,6 +185,7 @@ func main() {
 	// Get values from environment variables
 	bucketName := os.Getenv("S3_BUCKET_NAME")
 	region := os.Getenv("AWS_REGION")
+	CDN = os.Getenv("CDN")
 
 	// Create a new bucket client
 	s3b = NewS3Bucket(bucketName, region)
