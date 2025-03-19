@@ -5,24 +5,6 @@
 *   **Secure Uploads:** Generates pre-signed URLs, allowing clients to upload files directly to S3 without requiring AWS credentials.
 *   **Confirmation Endpoint:** Provides an endpoint to confirm successful uploads by verifying the file's existence in S3.
 
-## Architecture
-
-The application consists of the following components:
-
-*   **`S3Bucket` struct:** Encapsulates the S3 bucket configuration, client, and pre-signer.
-*   **`NewS3Bucket` function:** Initializes the S3 bucket client and pre-signer using AWS credentials from environment variables.
-*   **`GeneratePresignedURL` function:** Generates a pre-signed URL for uploading a file to S3.
-*   **`Exists` function:** Checks if a file exists in the S3 bucket.
-*   **`prepareUpload` endpoint:**
-    *   Receives a request with the desired file extension.
-    *   Generates a UUID for the filename.
-    *   Generates a pre-signed URL using the `GeneratePresignedURL` function.
-    *   Returns the pre-signed URL and the object key to the client.
-*   **`uploadConfirm` endpoint:**
-    *   Receives a request with the object key of the uploaded file.
-    *   Verifies the file's existence in S3 using the `Exists` function.
-    *   Returns a success or failure response to the client.
-
 ## Run locally
 1.  **Clone the repository:**
 2.  **Set environment variables:**
@@ -83,11 +65,25 @@ The application consists of the following components:
     }
     ```
 
-    The server will return a JSON response indicating whether the upload was successful:
+    The server will save the image key to database and return a JSON response indicating whether the upload was successful:
 
     ```json
     {
+      "status": "file uploaded successfully",
       "success": true,
-      "status": "file uploaded successfully"
+      "url": "https://your-cdn-url/uploads/your-uuid.jpeg"
+    }
+    ```
+
+4.  **Get all uploaded images:**
+
+    Send a GET request to the `/get-uploaded-images`:
+    The server will return a JSON response with all the images:
+
+    ```json
+    {
+      "status": "file uploaded successfully",
+      "success": true,
+      "url": "https://your-cdn-url/uploads/your-uuid.jpeg"
     }
     ```
