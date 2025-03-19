@@ -23,17 +23,7 @@ The application consists of the following components:
     *   Verifies the file's existence in S3 using the `Exists` function.
     *   Returns a success or failure response to the client.
 
-## Configuration
-
-The following environment variables are required:
-
-*   `S3_BUCKET_NAME`: The name of the S3 bucket.
-*   `AWS_REGION`: The AWS region where the S3 bucket is located.
-*   `AWS_ACCESS_KEY_ID`: Your AWS access key ID.
-*   `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key.
-
-## Deployment
-
+## Run locally
 1.  **Clone the repository:**
 2.  **Set environment variables:**
 
